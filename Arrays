@@ -1,0 +1,125 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DataStructersAlgorithms
+{
+    class Program
+    {
+
+        // Funcao para atravessar um array e printar todos os elementos
+        static void traverseArray(int[] array) 
+        {
+            Console.Write("[");
+            for (int i = 0; i < array.Length; i++) 
+            {
+                Console.Write(array[i] + " ");
+            }
+
+           Console.Write("]");
+        }
+
+        // Funcao para inserir elementos a um array
+
+        static void addElement(int[] array, int index, int element) 
+        {
+            array[index] = element;
+        }
+
+        // Verifica a existência de um elemento em um array
+        static bool findElement(int[] array , int element) 
+        {
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == element)
+                    return true;
+            }
+            return false;
+        }
+
+        // Funcao para remover um elemento de um array
+        static int[] removeArray(int[] array, int element)
+        {
+
+            if(!findElement(array, element))
+            {
+                Console.WriteLine($"Elemento {element} não encontrado no array");
+                return array;   
+            }
+
+            int[] newArray = new int[array.Length - 1];
+
+            // i itera sobre o array original
+            // j adiciona o elemento ao array
+
+            for(int i = 0, j= 0; i < array.Length; i++, j++)
+            {
+                if(array[i] != element)
+                {
+                    newArray[j] = array[i];
+                }
+            }
+
+            return newArray;
+
+        }
+        // função para reverter o array
+        static void reverseArray(int[] array)
+        {
+            for(int i = 0, j = array.Length-1 ; i < array.Length/2; i++, j--)
+            {
+                int temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            }
+
+            traverseArray(array);
+        } 
+
+        // Ordenar Array
+        static void sortArray(int[] array)
+        {
+            for(int i = 0; i < array.Length; i++)
+            {
+                for (int j = 0; j < array.Length-i-1; j++)
+                {
+                    if(array[j] > array[j+1])
+                    {
+                        int temp = array[j];
+                        array[j] = array[j+1];
+                        array[j+1] = temp;
+                    }
+                }
+            }
+            traverseArray(array);
+        }
+        static void Main(string[] args)
+        {
+
+            int[] numeros = new int[5];
+
+            addElement(numeros, 0,3);
+            addElement(numeros, 1, 7);
+            addElement(numeros, 2, 2);
+            addElement(numeros, 3, 1);
+            addElement(numeros, 4, 8);
+
+            Console.WriteLine("Array Original:");
+            traverseArray(numeros);
+
+            Console.WriteLine("\n\nArray após remoção: ");
+
+            numeros = removeArray(numeros, 8);
+
+            reverseArray(numeros);
+            Console.WriteLine("\n");
+            Console.WriteLine("Array Ordenado: ");
+            sortArray(numeros);
+
+            Console.ReadKey();
+
+        }
+    }
+}
