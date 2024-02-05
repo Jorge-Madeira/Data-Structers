@@ -1,4 +1,4 @@
-<h1># Data-Structers inc C# </h1>
+<h1># Data-Structers in C# </h1>
 
 <p>Este repo serve para eu partilhar a minha aprendizagem sobre estruturas de dados com objetivo de me tornar um programador completo.</p>
 <p>O objetivo passa por</p>
